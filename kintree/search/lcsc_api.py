@@ -147,8 +147,9 @@ def test_api() -> bool:
     # Check content of response
     if test_success:
         for key, value in expected.items():
-            if test_part[key] != value:
-                print(f'"{test_part[key]}" <> "{value}"')
+            actual = test_part.get(key)
+            if actual != value:
+                print(f'"{actual}" <> "{value}"')
                 test_success = False
                 break
 
