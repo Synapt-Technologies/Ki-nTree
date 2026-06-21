@@ -145,7 +145,7 @@ def download(url, filetype='API data', fileoutput='', timeout=3, enable_headers=
             for fetch in (requests.get, get_with_cloudscraper):
                 try:
                     return fetch(url, headers=headers, timeout=timeout).json()
-                except (requests.exceptions.JSONDecodeError, requests.exceptions.ConnectionError):
+                except (requests.exceptions.RequestException, ValueError):
                     continue
             url_data = urllib.request.urlopen(url)
             data = url_data.read()
